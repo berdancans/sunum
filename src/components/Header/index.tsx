@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 
-const Header = () => {
+export default function Header() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [openIndex, setOpenIndex] = useState(-1);
@@ -46,6 +46,7 @@ const Header = () => {
             </Link>
           </div>
           <div className="flex w-full items-center justify-between px-4">
+            {/* Mobile toggle */}
             <button
               onClick={toggleNavbar}
               aria-label="Mobile Menu"
@@ -67,6 +68,69 @@ const Header = () => {
                 }`}
               />
             </button>
+            {/* Menu */}
             <nav
               className={`absolute right-0 top-full z-30 w-64 rounded border bg-white p-4 transition-all lg:static lg:block lg:w-auto lg:border-none lg:bg-transparent lg:p-0 ${
-                navbarOpen ? "visible opa
+                navbarOpen ? "visible opacity-100" : "invisible opacity-0"
+              }`}
+            >
+              <ul className="flex flex-col lg:flex-row lg:space-x-8">
+                {menuData.map((item, idx) => (
+                  <li key={idx} className="relative">
+                    {item.submenu ? (
+                      <>
+                        <button
+                          onClick={() => toggleSubmenu(idx)}
+                          className="flex items-center py-2 text-base text-dark dark:text-white hover:text-primary"
+                        >
+                          {item.title}
+                          <svg width="16" height="16" className="ml-2">
+                            <path
+                              d="M4 6l4 4 4-4"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              fill="none"
+                            />
+                          </svg>
+                        </button>
+                        {openIndex === idx && (
+                          <ul className="absolute top-full left-0 bg-white dark:bg-gray-dark shadow-lg rounded mt-2">
+                            {item.submenu.map((sub, sidx) => (
+                              <li key={sidx}>
+                                <Link
+                                  href={sub.path}
+                                  className="block px-4 py-2 text-sm text-dark dark:text-white hover:text-primary"
+                                >
+                                  {sub.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </>
+                    ) : (
+                      <Link
+                        href={item.path}
+                        className={`block py-2 text-base ${
+                          pathname === item.path
+                            ? "text-primary dark:text-white"
+                            : "text-dark dark:text-white/70 hover:text-primary"
+                        }`}
+                      >
+                        {item.title}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            {/* Theme toggle */}
+            <div className="hidden items-center lg:flex lg:space-x-4">
+              <ThemeToggler />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
