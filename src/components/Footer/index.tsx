@@ -14,9 +14,9 @@ const Footer = () => {
                   <Image
                     src="/images/logo/logo.png"
                     alt="AI-First Logo"
-                    className="hidden w-full dark:block"
                     width={140}
                     height={30}
+                    className="w-full"
                   />
                 </Link>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
@@ -50,7 +50,6 @@ const Footer = () => {
                       İletişim
                     </Link>
                   </li>
-                  {/* Gerekirse başka CTO-odaklı linkler eklenebilir */}
                 </ul>
               </div>
             </div>
