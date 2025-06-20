@@ -1,47 +1,39 @@
-import { Brand } from "@/types/brand";
+export interface Brand {
+  id: number;
+  name: string;
+  href: string;
+  image: string;
+  imageLight: string;
+}
 
 const brandsData: Brand[] = [
   {
-    id: 6,
-    name: "Formbold",
-    href: "https://formbold.com",
-    image: "/images/brands/formbold.svg",
-    imageLight: "/images/brands/formbold-light.svg",
-  },
-  {
     id: 1,
-    name: "UIdeck",
-    href: "https://uideck.com",
-    image: "/images/brands/uideck.svg",
-    imageLight: "/images/brands/uideck-light.svg",
+    name: "AI-First",
+    href: "https://ai-first.me",
+    image: "/images/brands/aifirst.svg",
+    imageLight: "/images/brands/aifirst-light.svg",
   },
   {
     id: 2,
+    name: "RelatIQ",
+    href: "https://ai-first.me/relatiq",
+    image: "/images/brands/relatiq.svg",
+    imageLight: "/images/brands/relatiq-light.svg",
+  },
+  {
+    id: 3,
     name: "Tailgrids",
     href: "https://tailgrids.com",
     image: "/images/brands/tailgrids.svg",
     imageLight: "/images/brands/tailgrids-light.svg",
   },
   {
-    id: 3,
+    id: 4,
     name: "Lineicons",
     href: "https://lineicons.com",
     image: "/images/brands/lineicons.svg",
     imageLight: "/images/brands/lineicons-light.svg",
-  },
-  {
-    id: 4,
-    name: "Tailadmin",
-    href: "https://tailadmin.com",
-    image: "/images/brands/tailadmin.svg",
-    imageLight: "/images/brands/tailadmin-light.svg",
-  },
-  {
-    id: 5,
-    name: "PlainAdmin",
-    href: "https://plainadmin.com",
-    image: "/images/brands/plainadmin.svg",
-    imageLight: "/images/brands/plainadmin-light.svg",
   },
 ];
 

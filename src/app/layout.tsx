@@ -1,10 +1,11 @@
 "use client";
 
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import ScrollToTop from "../components/Common/ScrollUp";
 import { Inter } from "next/font/google";
-import "../styles/index.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/Common/ScrollUp";
+import { Providers } from "./providers";
+import "@/styles/index.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,17 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html lang="tr" suppressHydrationWarning>
       <head />
-
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
         <Providers>
           <Header />
-          {children}
+          <main>{children}</main>
           <Footer />
           <ScrollToTop />
         </Providers>
@@ -32,6 +28,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-import { Providers } from "./providers";
-
